@@ -59,11 +59,14 @@
           <span class="designator">U1 — Micromouse Power Supply Board</span>
           <h3>Regulated Power Supply for a Micromouse Robot</h3>
           <p>
-            Designed and built a custom PCB power supply board for a micromouse
-            robot. The board delivers regulated power to the rest of the system
-            while reporting live battery level and charging status over I2C,
-            so the rest of the robot's electronics can monitor power state in
-            real time.
+            Co-designed (with a project partner) the power module of a 4-module
+            Micro-Mouse robot, sharing one 80×62mm PCB against a $70 budget.
+            The board regulates USB-C 9V (negotiated via a HUSB237 USB-PD
+            controller) down to clean 3.3V/5V rails within 5% accuracy for the
+            rest of the system, charges the Li-Po pack through a BQ24074 charger
+            IC with switchable 200mA/600mA current, and reports live battery
+            voltage and current back to the main processor over I2C via an
+            INA219 sensor.
           </p>
           <div>
             <span class="tag">PCB Design</span>
@@ -73,7 +76,7 @@
           </div>
           <div class="project-links">
             <a href="#">View report →</a>
-            <a href="#">GitHub repo →</a>
+            <a href="https://github.com/segcboi/EEE3088F">GitHub repo →</a>
           </div>
         </div>
       </article>
@@ -109,31 +112,187 @@
 
       <!-- Project 3 -->
       <article class="panel project-card">
-        <div class="media-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <path d="M3 15l5-5 4 4 5-6 4 5"/>
-          </svg>
-          Add waveform / block diagram
+        <div class="media-placeholder has-photo">
+          <img src="assets/riscv-cordic-diagram.png" alt="Datapath block diagram of the RISC-V core with the CORDIC Rotation Unit (CRU) wired in" style="width:100%; height:100%; object-fit:contain; background:#fff;">
         </div>
         <div>
           <span class="designator">U3 — RISC-V Processor Core</span>
-          <h3>RISC-V Processor Design in iVerilog</h3>
+          <h3>RISC-V Processor with a CORDIC Hardware Accelerator</h3>
           <p>
             Designed a basic RISC-V-based processor core in Verilog, building
             out the datapath and instruction execution logic from the ground
-            up. Verified functional correctness by simulating the design in
-            iVerilog and inspecting the resulting waveforms in GTKWave.
+            up, then extended it with a custom CORDIC Rotation Unit (CRU) wired
+            in as a hardware accelerator for rotation/trig operations. Verified
+            functional correctness by simulating the design in iVerilog,
+            inspecting waveforms in GTKWave, and validating the CRU against
+            golden test vectors generated in MATLAB.
           </p>
           <div>
             <span class="tag">Computer Architecture</span>
             <span class="tag">Verilog</span>
             <span class="tag">iVerilog</span>
             <span class="tag">GTKWave</span>
+            <span class="tag">Hardware Accelerators</span>
           </div>
           <div class="project-links">
             <a href="#">View report →</a>
             <a href="#">GitHub repo →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="panel project-card">
+        <div class="media-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 15l5-5 4 4 5-6 4 5"/>
+          </svg>
+          Add photo of the buoy / board
+        </div>
+        <div>
+          <span class="designator">U4 — SIREN Buoy Power System</span>
+          <h3>Cold-Climate Battery Power System for an Antarctic Sensing Buoy</h3>
+          <p>
+            Contributed the power subsystem to Project SIREN, a 4-person team
+            design for a sensing buoy deployed in the Antarctic Marginal Ice
+            Zone. Designed and implemented a battery-pack-conditioning circuit
+            that self-heats the lithium-ion cells using thermistor feedback so
+            they stay viable in extreme cold, built as STM32F103C8T6 firmware
+            with supporting schematics, and backed by a literature review on
+            cold-climate battery behaviour and LoRaWAN for the buoy's comms link.
+          </p>
+          <div>
+            <span class="tag">Embedded C</span>
+            <span class="tag">STM32</span>
+            <span class="tag">Power Electronics</span>
+            <span class="tag">Battery Management</span>
+            <span class="tag">Team Project</span>
+          </div>
+          <div class="project-links">
+            <a href="#">View report →</a>
+            <a href="https://github.com/uruncleinthefurniturebusiness/Project-SIREN">GitHub repo →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 5 -->
+      <article class="panel project-card">
+        <div class="media-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 15l5-5 4 4 5-6 4 5"/>
+          </svg>
+          Add photo of the dish setup
+        </div>
+        <div>
+          <span class="designator">U5 — Two-Antenna Radio Interferometer <em style="font-style:normal; opacity:0.7;">(in progress)</em></span>
+          <h3>SDR-Based Radio Interferometer for UCT's 1420MHz Dishes</h3>
+          <p>
+            Final-year thesis project building a synchronised dual-channel SDR
+            data-capture system across UCT Astronomy's two existing 1420MHz
+            dish antennas, set on a 20m baseline. Uses a pair of ADALM-Pluto
+            SDRs modified for synchronised sampling, feeding a Raspberry Pi for
+            remote access, working toward cross-correlation image formation as
+            a teaching demonstrator for radio astronomy courses.
+          </p>
+          <div>
+            <span class="tag">SDR</span>
+            <span class="tag">RF Systems</span>
+            <span class="tag">Signal Processing</span>
+            <span class="tag">Radio Astronomy</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/uruncleinthefurniturebusiness/Interferometer">GitHub repo →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 6 -->
+      <article class="panel project-card">
+        <div class="media-placeholder has-photo">
+          <img src="assets/aqua-slicer-cad.png" alt="SolidWorks CAD render of the AQUA hybrid additive/subtractive manufacturing machine" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div>
+          <span class="designator">U6 — AQUA Hybrid Slicer</span>
+          <h3>Hybrid Additive/Subtractive Manufacturing Slicer</h3>
+          <p>
+            Personal project: a modular Python slicer that merges 3D-printing
+            and CNC-machining toolpaths into a single pipeline, with separate
+            modules for additive and subtractive toolpath generation, a
+            coordinate-frame transform layer, and an orchestrator producing
+            unified G-code output. Backed by a pytest regression suite and
+            wider reading across hybrid-manufacturing literature.
+          </p>
+          <div>
+            <span class="tag">Python</span>
+            <span class="tag">CAM Software</span>
+            <span class="tag">Software Architecture</span>
+            <span class="tag">Automated Testing</span>
+          </div>
+          <div class="project-links">
+            <a href="#">GitHub repo →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 7 -->
+      <article class="panel project-card">
+        <div class="media-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 15l5-5 4 4 5-6 4 5"/>
+          </svg>
+          Add photo of the STM32 dev board
+        </div>
+        <div>
+          <span class="designator">U7 — Embedded Systems II Practicals</span>
+          <h3>STM32 Embedded Systems Practical Series</h3>
+          <p>
+            A five-practical sequence spanning the embedded stack: GPIO timing
+            and a Mandelbrot-set renderer on the STM32F0, ARM assembly
+            fundamentals, porting the Mandelbrot renderer to the STM32F4, a
+            PWM-driven resistor-ladder DAC, and ADC sampling of an analog
+            sensor — building breadth from raw assembly up through peripheral
+            programming and signal conversion.
+          </p>
+          <div>
+            <span class="tag">Embedded C</span>
+            <span class="tag">ARM Assembly</span>
+            <span class="tag">STM32</span>
+            <span class="tag">ADC/DAC</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/uruncleinthefurniturebusiness/EEE3096S-2025">GitHub repo →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 8 -->
+      <article class="panel project-card">
+        <div class="media-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 15l5-5 4 4 5-6 4 5"/>
+          </svg>
+          Add app screenshot / Smith chart
+        </div>
+        <div>
+          <span class="designator">U8 — RF Matching-Network Tools</span>
+          <h3>MATLAB App Designer Tools for Transmission-Line &amp; Impedance Matching</h3>
+          <p>
+            Built MATLAB App Designer tools for coax and microstrip
+            transmission-line calculations and L-network/stub impedance
+            matching, part of the same RF design coursework sequence that
+            led into the 3.6GHz Yagi-Uda antenna build.
+          </p>
+          <div>
+            <span class="tag">RF Design</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">Impedance Matching</span>
+          </div>
+          <div class="project-links">
+            <a href="#">View report →</a>
           </div>
         </div>
       </article>

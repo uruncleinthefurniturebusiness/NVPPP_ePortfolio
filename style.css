@@ -313,6 +313,12 @@ main { display: block; }
     repeating-linear-gradient(45deg, rgba(147,170,189,0.04) 0 10px, transparent 10px 20px);
 }
 .media-placeholder svg { width: 32px; height: 32px; opacity: 0.5; }
+.media-placeholder.has-photo {
+  border-style: solid;
+  background: none;
+  padding: 0;
+  overflow: hidden;
+}
 
 /* ============ SKILLS (datasheet table) ============ */
 .spec-table {
