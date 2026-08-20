@@ -55,16 +55,18 @@
     </div>
 
     <div class="hero-graphic" aria-hidden="true">
-      <svg class="trace-graphic" viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-        <path class="trace-line" d="M10,120 C 90,120 90,40 170,40 S 250,120 330,120" />
-        <path class="trace-line" d="M10,20 H120 V60" />
-        <path class="trace-line" d="M330,20 H220 V60" />
-        <circle class="trace-node on" cx="10" cy="120" r="4"/>
-        <circle class="trace-node" cx="170" cy="40" r="4"/>
-        <circle class="trace-node on" cx="330" cy="120" r="4"/>
-        <circle class="trace-node" cx="10" cy="20" r="4"/>
-        <circle class="trace-node" cx="330" cy="20" r="4"/>
-        <circle class="signal-dot" r="4"/>
+      <svg class="gate-graphic" viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
+        <path class="gate-wire" d="M10,55 H140" />
+        <path class="gate-wire" d="M10,105 H140" />
+        <path class="gate-wire" d="M225,80 H330" />
+        <path class="gate-body" d="M140,40 H185 A40,40 0 0 1 185,120 H140 Z" />
+        <text class="gate-label" x="163" y="88">&amp;</text>
+        <circle class="gate-pin" cx="10" cy="55" r="4"/>
+        <circle class="gate-pin" cx="10" cy="105" r="4"/>
+        <circle class="gate-pin gate-pin--out" cx="330" cy="80" r="4"/>
+        <circle class="gate-dot gate-dot--a" r="4"/>
+        <circle class="gate-dot gate-dot--b" r="4"/>
+        <circle class="gate-dot gate-dot--out" r="4"/>
       </svg>
     </div>
   </section>

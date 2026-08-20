@@ -244,29 +244,73 @@ main { display: block; }
   color: var(--copper-bright);
 }
 
-/* circuit trace decoration */
-.trace-graphic { width: 100%; height: auto; }
-.trace-line {
+/* logic-gate decoration */
+.gate-graphic { width: 100%; height: auto; }
+.gate-wire {
   fill: none;
   stroke: var(--copper);
   stroke-width: 1.5;
   stroke-dasharray: 6 5;
   stroke-linecap: round;
 }
-.trace-node { fill: var(--bg); stroke: var(--copper-bright); stroke-width: 1.5; }
-.trace-node.on { fill: var(--signal); stroke: var(--signal); }
-.signal-dot {
-  fill: var(--signal);
-  filter: drop-shadow(0 0 4px rgba(255,180,84,0.9));
-  offset-path: path("M10,120 C 90,120 90,40 170,40 S 250,120 330,120");
-  animation: travel 4s linear infinite;
+.gate-body {
+  stroke: var(--copper-bright);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  animation: gate-pulse 4s linear infinite;
 }
-@keyframes travel {
-  0% { offset-distance: 0%; }
-  100% { offset-distance: 100%; }
+.gate-label {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  fill: var(--copper-bright);
+  text-anchor: middle;
+  opacity: 0.7;
+}
+.gate-pin { fill: var(--bg); stroke: var(--copper-bright); stroke-width: 1.5; }
+.gate-pin--out { animation: pin-pulse 4s linear infinite; }
+.gate-dot {
+  fill: var(--signal);
+  opacity: 0;
+  filter: drop-shadow(0 0 4px rgba(255,180,84,0.9));
+}
+.gate-dot--a {
+  offset-path: path("M10,55 H140");
+  animation: dot-in-travel 4s linear infinite;
+}
+.gate-dot--b {
+  offset-path: path("M10,105 H140");
+  animation: dot-in-travel 4s linear infinite;
+  animation-delay: 0.25s;
+}
+.gate-dot--out {
+  offset-path: path("M225,80 H330");
+  animation: dot-out-travel 4s linear infinite;
+}
+@keyframes dot-in-travel {
+  0% { offset-distance: 0%; opacity: 1; }
+  24% { offset-distance: 100%; opacity: 1; }
+  26%, 100% { offset-distance: 100%; opacity: 0; }
+}
+@keyframes gate-pulse {
+  0%, 28%, 46%, 100% { fill: var(--panel); filter: none; }
+  34%, 40% { fill: var(--signal); filter: drop-shadow(0 0 6px rgba(255,180,84,0.85)); }
+}
+@keyframes dot-out-travel {
+  0%, 44% { offset-distance: 0%; opacity: 0; }
+  47% { opacity: 1; }
+  70% { offset-distance: 100%; opacity: 1; }
+  74%, 100% { offset-distance: 100%; opacity: 0; }
+}
+@keyframes pin-pulse {
+  0%, 68%, 78%, 100% { fill: var(--bg); stroke: var(--copper-bright); }
+  72%, 75% { fill: var(--signal); stroke: var(--signal); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .signal-dot { animation: none; offset-distance: 40%; }
+  .gate-body, .gate-pin--out, .gate-dot, .gate-dot--a, .gate-dot--b, .gate-dot--out {
+    animation: none;
+  }
+  .gate-body { fill: var(--signal); filter: drop-shadow(0 0 6px rgba(255,180,84,0.85)); }
+  .gate-pin--out { fill: var(--signal); stroke: var(--signal); }
   html { scroll-behavior: auto; }
 }
 
