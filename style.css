@@ -287,7 +287,6 @@ main { display: block; }
   38%, 65% { fill: var(--signal); opacity: 1; filter: drop-shadow(0 0 5px rgba(255,180,84,0.85)); }
   90%, 100% { fill: var(--bg); opacity: 0; filter: none; }
 }
-.circuit-node--sm { stroke-width: 1.2; }
 .circuit-chip-body {
   fill: var(--panel);
   stroke: var(--copper-bright);
