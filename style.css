@@ -246,6 +246,9 @@ main { display: block; }
 
 /* circuit-trace network decoration */
 .circuit-graphic { width: 100%; height: auto; }
+@media (min-width: 861px) {
+  .circuit-graphic { transform: scale(1.15); transform-origin: center; }
+}
 .circuit-trace {
   fill: none;
   stroke: var(--copper-bright);
