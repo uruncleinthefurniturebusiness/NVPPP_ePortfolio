@@ -244,60 +244,49 @@ main { display: block; }
   color: var(--copper-bright);
 }
 
-/* circuit-chip decoration */
-.chip-graphic { width: 100%; height: auto; }
-.chip-wire {
-  fill: none;
-  stroke: var(--copper);
-  stroke-width: 1.5;
-  stroke-dasharray: 6 5;
-  stroke-linecap: round;
-}
-.chip-pin-leg {
+/* circuit-trace network decoration */
+.circuit-graphic { width: 100%; height: auto; }
+.circuit-trace {
   fill: none;
   stroke: var(--copper-bright);
   stroke-width: 1.5;
   stroke-linecap: round;
-}
-.chip-body {
-  fill: var(--panel);
-  stroke: var(--copper-bright);
-  stroke-width: 1.5;
-  animation: chip-glow 3s ease-in-out infinite;
-}
-.chip-notch { fill: var(--copper); }
-.chip-node { fill: var(--bg); stroke: var(--copper-bright); stroke-width: 1.5; }
-.chip-node--on { fill: var(--signal); stroke: var(--signal); }
-.chip-dot {
-  fill: var(--signal);
+  stroke-linejoin: round;
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: var(--len);
   opacity: 0;
-  filter: drop-shadow(0 0 4px rgba(255,180,84,0.9));
-  animation-timing-function: linear;
+  animation-name: circuit-draw;
+  animation-duration: var(--dur);
+  animation-delay: var(--delay);
+  animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
-.chip-dot--l1 { offset-path: path("M10,58 H140"); animation-name: dot-flow; animation-duration: 2.8s; animation-delay: 0s; }
-.chip-dot--l2 { offset-path: path("M10,80 H140"); animation-name: dot-flow; animation-duration: 3.4s; animation-delay: 0.9s; }
-.chip-dot--l3 { offset-path: path("M10,102 H140"); animation-name: dot-flow; animation-duration: 3s; animation-delay: 1.8s; }
-.chip-dot--r1 { offset-path: path("M200,58 H330"); animation-name: dot-flow; animation-duration: 3.2s; animation-delay: 0.4s; }
-.chip-dot--r2 { offset-path: path("M200,80 H330"); animation-name: dot-flow; animation-duration: 2.6s; animation-delay: 1.3s; }
-.chip-dot--r3 { offset-path: path("M200,102 H330"); animation-name: dot-flow; animation-duration: 3.6s; animation-delay: 2.1s; }
-@keyframes dot-flow {
-  0% { offset-distance: 0%; opacity: 0; }
-  8% { opacity: 1; }
-  92% { opacity: 1; }
-  100% { offset-distance: 100%; opacity: 0; }
+@keyframes circuit-draw {
+  0% { stroke-dashoffset: var(--len); opacity: 0; }
+  8% { opacity: 0.9; }
+  35%, 68% { stroke-dashoffset: 0; opacity: 0.9; }
+  90%, 100% { stroke-dashoffset: var(--len); opacity: 0; }
 }
-@keyframes chip-glow {
-  0%, 100% { filter: none; stroke: var(--copper-bright); }
-  50% { filter: drop-shadow(0 0 8px rgba(255,180,84,0.55)); stroke: var(--signal); }
+.circuit-node {
+  fill: var(--bg);
+  stroke: var(--copper-bright);
+  stroke-width: 1.5;
+  opacity: 0;
+  animation-name: circuit-node-glow;
+  animation-duration: var(--dur);
+  animation-delay: var(--delay);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes circuit-node-glow {
+  0%, 30% { fill: var(--bg); opacity: 0; filter: none; }
+  38%, 65% { fill: var(--signal); opacity: 1; filter: drop-shadow(0 0 5px rgba(255,180,84,0.85)); }
+  90%, 100% { fill: var(--bg); opacity: 0; filter: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .chip-body,
-  .chip-dot--l1, .chip-dot--l2, .chip-dot--l3,
-  .chip-dot--r1, .chip-dot--r2, .chip-dot--r3 {
-    animation: none;
-  }
-  .chip-body { filter: drop-shadow(0 0 6px rgba(255,180,84,0.55)); stroke: var(--signal); }
+  .circuit-trace, .circuit-node { animation: none; }
+  .circuit-trace { stroke-dashoffset: 0; opacity: 0.7; }
+  .circuit-node { fill: var(--signal); stroke: var(--signal); opacity: 0.9; }
   html { scroll-behavior: auto; }
 }
 
