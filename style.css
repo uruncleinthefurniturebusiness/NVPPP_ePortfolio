@@ -284,10 +284,23 @@ main { display: block; }
   90%, 100% { fill: var(--bg); opacity: 0; filter: none; }
 }
 .circuit-node--sm { stroke-width: 1.2; }
+.circuit-chip-body {
+  fill: var(--panel);
+  stroke: var(--copper-bright);
+  stroke-width: 1.5;
+  animation: circuit-chip-glow 3s ease-in-out infinite;
+}
+.circuit-chip-notch { fill: var(--copper); }
+.circuit-pin { fill: var(--copper-bright); opacity: 0.6; }
+@keyframes circuit-chip-glow {
+  0%, 100% { filter: none; stroke: var(--copper-bright); }
+  50% { filter: drop-shadow(0 0 8px rgba(255,180,84,0.55)); stroke: var(--signal); }
+}
 @media (prefers-reduced-motion: reduce) {
-  .circuit-trace, .circuit-node { animation: none; }
+  .circuit-trace, .circuit-node, .circuit-chip-body { animation: none; }
   .circuit-trace { stroke-dashoffset: 0; opacity: 0.7; }
   .circuit-node { fill: var(--signal); stroke: var(--signal); opacity: 0.9; }
+  .circuit-chip-body { filter: drop-shadow(0 0 6px rgba(255,180,84,0.55)); stroke: var(--signal); }
   html { scroll-behavior: auto; }
 }
 
